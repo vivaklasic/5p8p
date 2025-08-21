@@ -633,16 +633,16 @@ canvas {
 
 
 @media only screen and (max-width: 900px) {
-  body, html {
-    height: 100vh;
+   body, html {
+    height: 100dvh; /* <-- Изменение здесь */
     margin: 0;
     padding: 0;
-    overflow-y: hidden; /* Изменено, чтобы предотвратить двойной скролл */
+    overflow-y: hidden;
   }
 
   .playground {
     flex-direction: column;
-    height: 100vh; /* Заставляем занимать всю высоту */
+    height: 100dvh; /* <-- И здесь */
     overflow-y: hidden;
     display: flex;
     flex-wrap: nowrap;
