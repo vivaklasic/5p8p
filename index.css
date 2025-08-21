@@ -637,33 +637,31 @@ canvas {
     height: 100vh;
     margin: 0;
     padding: 0;
-    overflow-y: auto;
+    overflow-y: hidden; /* Изменено, чтобы предотвратить двойной скролл */
   }
 
   .playground {
     flex-direction: column;
-    min-height: 100vh; /* Полная высота */
-    height: auto; /* Растягивается по контенту */
-    overflow-y: visible;
+    height: 100vh; /* Заставляем занимать всю высоту */
+    overflow-y: hidden;
     display: flex;
     flex-wrap: nowrap;
   }
 
   .main-container {
-    flex: 0 0 auto;
-    max-height: 50vh; /* ~50% экрана для canvas */
-    overflow: visible !important;
+    flex: 1 1 60%; /* Увеличиваем долю canvas */
+    overflow: hidden;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    order: 1; /* Первый */
+    order: 1;
     width: 100%;
+    min-height: 0; /* Для корректной работы flexbox */
   }
 
   canvas {
     width: 100% !important;
-    height: auto !important;
-    max-height: 50vh; /* Увеличенный canvas */
+    height: 100% !important; /* Растягиваем на весь контейнер */
     object-fit: contain;
   }
 
@@ -673,42 +671,31 @@ canvas {
     height: auto;
     padding: 4px;
     justify-content: space-around;
-    order: 2; /* Второй */
-    flex: 0 0 auto;
+    order: 2;
+    flex: 0 0 auto; /* Фиксированная высота по контенту */
     background-color: var(--color-bg);
     width: 100%;
   }
 
   .sidebar {
-    flex: 1 1 auto; /* Растягиваем для заполнения */
-    min-height: 25vh; /* Минимум 25% экрана */
+    flex: 1 1 40%; /* Отдаем оставшееся место */
     max-width: 100vw;
     border-right: none;
-    order: 3; /* Третий */
+    order: 3;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Делаем колонкой для правильного порядка */
+    min-height: 0; /* Для корректной работы flexbox */
   }
 
-  #editor {
-    display: none;
-    flex: 0 0 auto;
-    max-height: 25vh;
+  #editor, #chat {
+    flex: 1 1 auto; /* Растягиваем, чтобы занять доступное место */
     overflow-y: auto;
-    background-color: var(--code-editor-bg);
-  }
-
-  #editor.showtab {
-    display: flex !important;
-  }
-
-  #chat {
     display: none;
-    flex: 0 0 auto;
-    max-height: 25vh;
-    overflow-y: auto;
+    min-height: 0;
+    order: 1; /* Область чата/кода будет первой */
   }
-
-  #chat.showtab {
+  
+  #editor.showtab, #chat.showtab {
     display: flex !important;
   }
 
@@ -716,8 +703,9 @@ canvas {
     display: flex !important;
     flex-wrap: wrap;
     padding: 4px;
-    border-bottom: 1px solid var(--color-sidebar-border);
-    order: 4; /* Последний */
+    border-top: 1px solid var(--color-sidebar-border); /* Граница сверху */
+    border-bottom: none;
+    order: 2; /* Кнопки выбора будут вторыми (внизу) */
     flex: 0 0 auto;
     width: 100%;
     background-color: var(--color-bg);
@@ -732,6 +720,7 @@ canvas {
 
   #inputArea {
     height: auto;
+    flex: 0 0 auto; /* Не растягиваем поле ввода */
     padding: 6px;
     width: 100%;
   }
@@ -871,4 +860,3 @@ main {
 .main-container {
   overflow: visible !important;
 }
-
