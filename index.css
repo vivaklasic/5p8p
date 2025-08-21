@@ -872,3 +872,17 @@ code.hljs {
   /* purposely ignored */
 
 }
+
+main {
+  overflow: visible !important;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.main-container {
+  overflow: visible !important;
+}
+
