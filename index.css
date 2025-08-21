@@ -637,14 +637,14 @@ canvas {
     height: 100vh;
     margin: 0;
     padding: 0;
-    overflow-y: auto; /* Скролл на уровне body */
+    overflow-y: auto;
   }
 
   .playground {
-    flex-direction: column; /* Вертикальный стек */
-    min-height: 100vh; /* Полная высота */
+    flex-direction: column;
+    min-height: 100vh; /* Полная высота экрана */
     height: auto; /* Растягивается по контенту */
-    overflow-y: visible; /* Без обрезки */
+    overflow-y: visible;
     display: flex;
     flex-wrap: nowrap;
   }
@@ -654,7 +654,7 @@ canvas {
     max-height: 40vh; /* ~40% экрана для canvas */
     overflow: visible !important;
     display: flex;
-    align-items: flex-start; /* Canvas сверху */
+    align-items: flex-start;
     justify-content: center;
     order: 1; /* Первый */
     width: 100%;
@@ -663,21 +663,22 @@ canvas {
   canvas {
     width: 100% !important;
     height: auto !important;
-    max-height: 40vh; /* Ограничение высоты */
+    max-height: 40vh;
     object-fit: contain;
   }
 
   .sidebar {
-    flex: 1 1 auto; /* Растягиваем для заполнения */
+    flex: 1 1 auto; /* Растягиваем для заполнения оставшегося пространства */
     max-width: 100vw;
     border-right: none;
     order: 3; /* Третий */
     display: flex;
     flex-direction: column;
+    min-height: 50vh; /* Минимальная высота для чата/кода */
   }
 
   .selector {
-    display: flex !important; /* Показываем вкладки */
+    display: flex !important;
     flex-wrap: wrap;
     padding: 4px;
     border-bottom: 1px solid var(--color-sidebar-border);
@@ -690,12 +691,12 @@ canvas {
   .selector button {
     padding: 5px 8px;
     font-size: 0.8em;
-    flex: 1 1 auto; /* Кнопки растягиваются */
+    flex: 1 1 auto;
     text-align: center;
   }
 
   #editor {
-    display: none; /* Скрыт по умолчанию */
+    display: none;
     flex: 0 0 auto;
     max-height: 25vh;
     overflow-y: auto;
@@ -703,18 +704,18 @@ canvas {
   }
 
   #editor.showtab {
-    display: flex !important; /* Показываем для вкладки Code */
+    display: flex !important;
   }
 
   #chat {
-    display: none; /* Скрыт по умолчанию */
+    display: none;
     flex: 0 0 auto;
     max-height: 25vh;
     overflow-y: auto;
   }
 
   #chat.showtab {
-    display: flex !important; /* Показываем для вкладки Chat */
+    display: flex !important;
   }
 
   .toolbar {
@@ -750,18 +751,6 @@ canvas {
     padding: 3px;
     border-radius: 50%;
   }
-}
-/**
- * Code Syntax Highlighting
- *****************************************************************************/
-
- pre code.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 1em
-}
-code.hljs {
-  padding: 3px 5px
 }
 /*!
   Theme: StackOverflow Dark
