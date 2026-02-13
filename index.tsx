@@ -59,17 +59,18 @@ const EXAMPLE_PROMPTS = [
 const ai = new GoogleGenAI({
   
 apiKey: import.meta.env.VITE_GEMINI_API_KEY,
-  apiVersion: 'v1',
+  apiVersion: 'v1alpha',
 });
 
 function createAiChat() {
   return ai.chats.create({
-    model: 'gemini-3-flash',
+    model: 'gemini-2.5-flash',
     config: {
-      system_instruction: {
-        parts: [{ text: SYSTEM_INSTRUCTIONS }]
-      }
-    }
+      systemInstruction: SYSTEM_INSTRUCTIONS,
+      thinkingConfig: {
+        includeThoughts: true,
+      },
+    },
   });
 }
 
