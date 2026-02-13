@@ -64,7 +64,7 @@ apiKey: import.meta.env.VITE_GEMINI_API_KEY,
 
 function createAiChat() {
   return ai.chats.create({
-    model: 'gemini 3 Flash',
+    model: 'gemini-3-flash',
     config: {
       systemInstruction: SYSTEM_INSTRUCTIONS,
       thinkingConfig: {
