@@ -66,13 +66,13 @@ function createAiChat() {
   return ai.chats.create({
     model: 'gemini-3-flash',
     config: {
-      systemInstruction: SYSTEM_INSTRUCTIONS,
-      thinkingConfig: {
-        includeThoughts: true,
-      },
-    },
+      system_instruction: {
+        parts: [{ text: SYSTEM_INSTRUCTIONS }]
+      }
+    }
   });
 }
+
 
 let aiChat = createAiChat();
 
